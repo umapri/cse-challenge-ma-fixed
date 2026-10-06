@@ -1,5 +1,6 @@
 # .github/workflows/fossa.yml
-# FOSSA scan for the FlipFlop x StepToes AI M&A diligence (fossas/cse-challenge-ma).
+# FOSSA scan for the REMEDIATED StepToes AI code (umapri/cse-challenge-ma-fixed).
+# Uses separate FOSSA projects (*-fixed) so before/after results sit side by side in the UI.
 # One FOSSA project per product directory, as the brief requires (`fossa analyze <dir> --project <name>`).
 #
 # Licensing policy per target (based on how each product is delivered, not on its language):
@@ -51,14 +52,14 @@ jobs:
       matrix:
         include:
           - dir: distributed-python-based-product
-            project: steptoes-distributed-python
-            title: "StepToes AI - Distributed (Python)"
+            project: steptoes-distributed-python-fixed
+            title: "StepToes AI - Distributed (Python) - FIXED"
             label: distributed
             policy_var: FOSSA_POLICY_DISTRIBUTED
             policy_default: "Standard Bundle Distribution"   # shipped to customers as packages/files
           - dir: nondistributed-javascript-based-product
-            project: steptoes-nondistributed-js
-            title: "StepToes AI - Non-distributed (JavaScript)"
+            project: steptoes-nondistributed-js-fixed
+            title: "StepToes AI - Non-distributed (JavaScript) - FIXED"
             label: non-distributed
             policy_var: FOSSA_POLICY_HOSTED
             policy_default: "Website/Hosted Service"         # runs behind a server; watch for AGPL
@@ -111,6 +112,7 @@ jobs:
             --title "${{ matrix.title }}"
             --project-label "${{ matrix.label }}"
             --project-label m-and-a
+            --project-label remediated
             --policy "$POLICY"
             --json
           )

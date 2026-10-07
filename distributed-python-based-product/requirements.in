@@ -6,7 +6,7 @@ pylint==2.15.0
 paramiko==2.7.2
 #pylint==2.8.3
 require==0.1.1
-#particular==0.1.4 does not exist only 0.0.1 does <REVIEW>
+particular==0.1.4
 particular==0.0.1
 SecretStorage==2.3.1
 six==1.12.0
